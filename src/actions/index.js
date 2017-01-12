@@ -1,31 +1,42 @@
 import 'isomorphic-fetch';
 
-const bikesUrl = 'https://jujhar.com/bikes.json';
+const bikesUrl = 'bikes.json';
 
 // Action constants
-export const CHANGE_CATEGORY_FILTER = 'CHANGE_CATEGORY_FILTER';
+export const CHANGE_CLASS_FILTER = 'CHANGE_CLASS_FILTER';
 export const REQUEST_BIKES = 'REQUEST_BIKES';
 export const REQUEST_BIKES_FAIL = 'REQUEST_BIKES_FAIL';
 export const REQUEST_BIKES_SUCCESS = 'REQUEST_BIKES_SUCCESS';
 
-export function requestBikesSuccess(data) { }
-export function requestBikesFail(error) { }
+export function requestBikesSuccess(data) {
+  return {
+    type: REQUEST_BIKES_SUCCESS,
+    payload: { data },
+  };
+}
+
+export function requestBikesFail(error) {
+  return {
+    type: REQUEST_BIKES_FAIL,
+    payload: { error },
+  };
+}
 
 export function requestBikes() {
   return async function(dispatch) {
     try {
       const response = await fetch(bikesUrl);
       const json = await response.json();
-      dispatch(requestBikesSuccess(json));
+      dispatch(requestBikesSuccess(json.items));
     } catch (error) {
       dispatch(requestBikesFail(error));
     }
   };
 }
 
-export function changeCategoryFilter(filter) {
+export function changeClassFilter(filter) {
   return {
-    type: CHANGE_CATEGORY_FILTER,
-    filter
+    type: CHANGE_CLASS_FILTER,
+    payload: { filter },
   };
 }

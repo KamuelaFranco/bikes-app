@@ -6,8 +6,9 @@ import App from './containers/App';
 
 import './index.css';
 import store from './store';
+import { requestBikes } from './actions';
 
-store.dispatch();
+store.dispatch(requestBikes());
 
 // ReactDOM.render(
 //   <Provider store={store}>

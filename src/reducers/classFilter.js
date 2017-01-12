@@ -1,8 +1,8 @@
-const { CHANGE_CATEGORY_FILTER } = require('../actions');
+import { CHANGE_CLASS_FILTER } from '../actions';
 
-function categoryFilter(state = 'top', action) {
+function classFilter(state = 'top', action) {
 	switch (action.type) {
-		case CHANGE_CATEGORY_FILTER:
+		case CHANGE_CLASS_FILTER:
 			switch (String(action.filter).toLowerCase()) {
 				case 'all': return 'all';
 				case 'top': return 'top';
@@ -20,4 +20,4 @@ function categoryFilter(state = 'top', action) {
 	}
 }
 
-module.exports = categoryFilter;
+module.exports = classFilter;

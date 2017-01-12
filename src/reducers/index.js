@@ -1,15 +1,13 @@
-const { combineReducers } = require('redux');
-const categoryFilter = require('./categoryFilter');
-const games = require('./games');
-const isFetching = require('./isFetching');
-const jackpotAmounts = require('./jackpotAmounts');
+import { combineReducers } from 'redux';
+import classFilter from './classFilter';
+import bikes from './bikes';
+import isFetching from './isFetching';
 
 // Create a root reducer and expose it for store creation
 const rootReducer = combineReducers({
-    categoryFilter,
-    games,
-    isFetching,
-    jackpotAmounts
+  classFilter,
+  bikes,
+  isFetching,
 });
 
-module.exports = rootReducer;
+export default rootReducer;
