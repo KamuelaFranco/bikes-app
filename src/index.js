@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './containers/App';
 import './index.css';
 
-const { Provider } = require('react-redux');
-const App = require('./containers/App');
+import { Provider } from 'react-redux';
 
 const store = require('./store');
 const actions = require('./actions');

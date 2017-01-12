@@ -1,9 +1,6 @@
-'use strict';
+import 'isomorphic-fetch';
 
-const fetch = require('isomorphic-fetch');
-
-const gamesListUrl = 'http://stage.whitehatgaming.com/progtest/games.xml';
-const jackpotsUrl = 'http://stage.whitehatgaming.com/progtest/jackpots.php';
+const bikesUrl = 'http://stage.whitehatgaming.com/progtest/games.xml';
 
 const CHANGE_CATEGORY_FILTER = 'CHANGE_CATEGORY_FILTER';
 
