@@ -2,60 +2,50 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: grey;
-}
-
-.games-list {
   background-color: #DDDDDD;
+  max-width: 100%;
 }
 
-.game {
-  background-color: #FFFFFF;
-  position: relative;
-  min-width: 260px;
-  min-height: 154px;
-  overflow: hidden;
-  max-width: 260px;
-  max-height: 154px;
+.container {
+  max-width: 100%;
 }
 
 .category-menu {
-  display: inline;
+  display: flex;
+  justify-content: space-around;
   background-color: #DDDDDD;
   margin: 5px;
 }
 
+.category-title {
+  color: blue;
+}
+
 .category {
-  color: white;
+  color: black;
+  background-color: white;
+  width: 20%;
+  font-size: 1em;
+  font-weight: bold;
 }
 
-.jackpot-game {
+.item-list {
+  background-color: #DDDDDD;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.item {
+  display: block;
 }
-.category,.game{display:inline-block;}
-span.game-name {
-    top: 15px;
-    left: 15px;
-    color: #fff;
 
+.item-description {
+  position: relative;
 }
-.game img {
-    min-width: 100%;
-    min-height: 100%;
-}
-span.game-name,.play-button{
-    position: absolute;z-index: 9999;}
-.play-button{
-    top: 50%;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 120%;
-    left: 90px;
-}
-button.play-button:before {
-    content: ">";
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+
+.item-name {
+  position: relative;
+  top: 5;
+  left: 10;
 }

@@ -11,6 +11,6 @@ I am actually not sure what is meant by "custom order based on class." I impleme
 
 I absolutely would have used TDD if not for code reuse regardless of "time saved" by electing to not integrate proper unit testing. I did not use separate dev, feature branches because of the time constraint.
 
-Ultimately, the code needs to be stress tested and be a little less brittle by handling more failure cases. Given more time, I'd improve this.
+Ultimately, the code needs to be stress tested and be a little less brittle by handling more failure cases. Given more time, I'd improve this. I've neglected proper PropTypes for many of the components.
 
 Interestingly enough, this is the first time I've had any issue with airbnb-eslint not working by default. That linter is critical to keeping up code cleanliness, but I didn't want to bikeshed for this task by figuring it out. Code should be kept very similar to the airbnb style anyway because of habit. Though obviously it isn't linted, so I'm probably messing up here and there... Hence the need for linting.
