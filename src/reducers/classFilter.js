@@ -1,10 +1,10 @@
 import { CHANGE_CLASS_FILTER } from '../actions';
 
-export default function classFilter(state = '', action) {
+export default function classFilter(state = 'all', action) {
 	if (!action) {
 		return state;
 	}
-	if (action.type && action.payload && action.payload.filter) {
+	if (action.type === CHANGE_CLASS_FILTER && action.payload && action.payload.filter) {
 		return action.payload.filter;
 	}
 	return state;

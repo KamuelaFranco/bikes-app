@@ -16,7 +16,7 @@ const App = ({ changeClassFilter, state }) => {
     <div>
       <div>
         <CategoryMenu
-          categories={[...new Set([].concat(...state.bikes.map(bike => bike.class)))]} category={state.classFilter} changeCategory={changeClassFilter}
+          categories={['all',...new Set([].concat(...state.bikes.map(bike => bike.class)))]} category={state.classFilter} changeCategory={changeClassFilter}
         />
         <GamesList category={state.classFilter} games={state.bikes} jackpotAmounts={[]} />
       </div>

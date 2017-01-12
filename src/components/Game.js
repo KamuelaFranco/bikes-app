@@ -9,7 +9,7 @@ class Game extends Component {
 		return (
 			<div className="game">
         <span className="game-name">{this.props.name}</span>
-        <img src={'http:' + this.props.image} />
+        <img alt={this.props.name} src={'http:' + this.props.image} />
         <button className="play-button" onClick={this.handleClick.bind(this)}>Play</button>
 			</div>
 		);
