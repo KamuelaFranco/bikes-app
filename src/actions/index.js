@@ -24,6 +24,7 @@ export function requestBikesFail(error) {
 
 export function requestBikes() {
   return async function(dispatch) {
+    dispatch({ type: REQUEST_BIKES });
     try {
       const response = await fetch(bikesUrl);
       const json = await response.json();
@@ -35,8 +36,11 @@ export function requestBikes() {
 }
 
 export function changeClassFilter(filter) {
-  return {
-    type: CHANGE_CLASS_FILTER,
-    payload: { filter },
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_CLASS_FILTER,
+      payload: { filter },
+    });
+    window.localStorage.setItem('filter', filter);
   };
 }

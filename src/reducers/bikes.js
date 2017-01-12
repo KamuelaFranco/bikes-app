@@ -1,6 +1,9 @@
 import { REQUEST_BIKES_SUCCESS } from '../actions';
 
-function bikes(state = [], action) {
+export default function bikes(state = [], action) {
+  if (!action) {
+    return state;
+  }
 	switch (action.type) {
 		case REQUEST_BIKES_SUCCESS:
 			return [...state, action.payload.data];
@@ -8,5 +11,3 @@ function bikes(state = [], action) {
 			return state;
 	}
 }
-
-export default bikes;

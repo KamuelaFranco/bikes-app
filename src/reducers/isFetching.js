@@ -1,25 +1,17 @@
-'use strict';
+import { REQUEST_BIKES, REQUEST_BIKES_FAIL, REQUEST_BIKES_SUCCESS } from '../actions';
 
-const { REQUEST_GAMES,
-				RECEIVE_GAMES,
-				REQUEST_JACKPOT_AMOUNTS,
-				RECEIVE_JACKPOT_AMOUNTS } = require('../actions');
-
-// TODO: See if this state object is optimal
-
-function isFetching(state = { games: false, jackpots: false }, action) {
+export default function isFetching(state = false, action) {
+	if (!action) {
+		return state;
+	}
 	switch (action.type) {
-		case REQUEST_GAMES:
-			return Object.assign({}, state, {games: true});
-		case RECEIVE_GAMES:
-			return Object.assign({}, state, {games: false});
-		case REQUEST_JACKPOT_AMOUNTS:
-			return Object.assign({}, state, {jackpots: true});
-		case RECEIVE_JACKPOT_AMOUNTS:
-			return Object.assign({}, state, {jackpots: false});
+		case REQUEST_BIKES:
+			return true;
+		case REQUEST_BIKES_FAIL:
+			return false;
+		case REQUEST_BIKES_SUCCESS:
+			return false;
 		default:
 			return state;
 	}
 }
-
-module.exports = isFetching;

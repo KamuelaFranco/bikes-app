@@ -5,7 +5,9 @@
 * I am not expected to spend much time on this task
 
 ## Discussion
-The very first thing I did was to identify this task as very similar to one I have completed in React and Redux before. However, I hadn't visited that codebase in quite a while, so I've updated it to more modern practises in this rendition. My strong suit is not design, and since it wasn't developed with a design spec in mind, do not judge too harshly.
+The very first thing I did was to identify this task as very similar to one I have completed in React and Redux before. Reusing code is one of the best reasons to use React. However, I hadn't visited that codebase in quite a while, so I've updated it to more modern practises in this rendition. My strong suit is not design, and since it wasn't developed with a design spec in mind, do not judge too harshly.
+
+I am actually not sure what is meant by "custom order based on class." I implemented it as a filter instead. Selection persistence ought to be fully functional as well on reloads, etc. I used localStorage.
 
 I absolutely would have used TDD if not for code reuse regardless of "time saved" by electing to not integrate proper unit testing. I did not use separate dev, feature branches because of the time constraint.
 

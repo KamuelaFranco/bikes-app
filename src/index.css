@@ -1,37 +1,32 @@
 body {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-}
-
-/* Global Styles will be included here and can be overwritten with inline component styling */
-body {
-    font-family: sans-serif;
-    background-image: url('http://stage.whitehatgaming.com/progtest/images/background.jpg');
+  background-color: grey;
 }
 
 .games-list {
-    background-color: #DDDDDD;
+  background-color: #DDDDDD;
 }
 
 .game {
-    background-color: #FFFFFF;
-    position: relative;
-    min-width: 260px;
-    min-height: 154px;
-    overflow: hidden;
-    max-width: 260px;
-    max-height: 154px;
+  background-color: #FFFFFF;
+  position: relative;
+  min-width: 260px;
+  min-height: 154px;
+  overflow: hidden;
+  max-width: 260px;
+  max-height: 154px;
 }
 
 .category-menu {
-    display: inline;
-    background-color: #DDDDDD;
-    margin: 5px;
+  display: inline;
+  background-color: #DDDDDD;
+  margin: 5px;
 }
 
 .category {
-    color: white;
+  color: white;
 }
 
 .jackpot-game {

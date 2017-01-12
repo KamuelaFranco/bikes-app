@@ -8,6 +8,7 @@ const loggerMiddleware = createLogger();
 
 const store = createStore(
   rootReducer,
+  Object.assign(rootReducer(), { classFilter: window.localStorage.getItem('filter') || '' }),
   applyMiddleware(
     thunkMiddleware,
     loggerMiddleware,
