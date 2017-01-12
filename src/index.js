@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
-import './index.css';
-
 import { Provider } from 'react-redux';
 
-const store = require('./store');
-const actions = require('./actions');
+import App from './containers/App';
 
-// Initial loading
-store.getState();
-store.dispatch(actions.fetchGames());
-let unsubscribe = store.subscribe(() => console.log(store.getState()));
+import './index.css';
+import store from './store';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+store.dispatch();
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// );

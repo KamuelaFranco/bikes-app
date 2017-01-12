@@ -1,111 +1,31 @@
 import 'isomorphic-fetch';
 
-const bikesUrl = 'http://stage.whitehatgaming.com/progtest/games.xml';
+const bikesUrl = 'https://jujhar.com/bikes.json';
 
-const CHANGE_CATEGORY_FILTER = 'CHANGE_CATEGORY_FILTER';
+// Action constants
+export const CHANGE_CATEGORY_FILTER = 'CHANGE_CATEGORY_FILTER';
+export const REQUEST_BIKES = 'REQUEST_BIKES';
+export const REQUEST_BIKES_FAIL = 'REQUEST_BIKES_FAIL';
+export const REQUEST_BIKES_SUCCESS = 'REQUEST_BIKES_SUCCESS';
 
-const REQUEST_JACKPOT_AMOUNTS = 'REQUEST_JACKPOT_AMOUNTS';
-const RECEIVE_JACKPOT_AMOUNTS = 'RECEIVE_JACKPOT_AMOUNTS';
+export function requestBikesSuccess(data) { }
+export function requestBikesFail(error) { }
 
-const REQUEST_GAMES = 'REQUEST_GAMES';
-const RECEIVE_GAMES = 'RECEIVE_GAMES';
-
-function requestJackpotAmounts() {
-    return {
-        type: REQUEST_JACKPOT_AMOUNTS
-    };
-}
-
-function receiveJackpotAmounts(json) {
-    if (String(json) === 'error') {
-        return {
-            type: RECEIVE_JACKPOT_AMOUNTS,
-            error: true
-        };
+export function requestBikes() {
+  return async function(dispatch) {
+    try {
+      const response = await fetch(bikesUrl);
+      const json = await response.json();
+      dispatch(requestBikesSuccess(json));
+    } catch (error) {
+      dispatch(requestBikesFail(error));
     }
-    return {
-        type: RECEIVE_JACKPOT_AMOUNTS,
-        amounts: json,
-        receivedAt: Date.now()
-    };
+  };
 }
 
-function requestGames() {
-    return {
-        type: REQUEST_GAMES
-    };
+export function changeCategoryFilter(filter) {
+  return {
+    type: CHANGE_CATEGORY_FILTER,
+    filter
+  };
 }
-
-function receiveGames(json) {
-    if (String(json) === 'error') {
-        return {
-            type: RECEIVE_GAMES,
-            error: true
-        }
-    }
-    return {
-        type: RECEIVE_GAMES,
-        games: json
-    }
-}
-
-function changeCategoryFilter(filter) {
-    return { type: CHANGE_CATEGORY_FILTER, filter };
-}
-
-function fetchGames() {
-    return function (dispatch) {
-        dispatch(requestGames());
-
-        return fetch(gamesListUrl)
-          .then(response => response.text())
-          .then(text => {
-              let parser;
-              let xmlDoc;
-              if (window.DOMParser) {
-                  parser = new DOMParser();
-                  xmlDoc = parser.parseFromString(text,"text/xml");
-              }
-
-              return Array.prototype.map.call(xmlDoc.getElementsByTagName('item'), item=>item)
-                .map(item => {
-                  return {
-                      name: item.getAttribute('gname'),
-                      category: item.getAttribute('class'),
-                      image: item.getAttribute('g_img'),
-                      link: item.getAttribute('g_link'),
-                      jackpotId: item.getAttribute('jpdriver')
-                  };
-              });
-          })
-          .then(json => dispatch(receiveGames(json))
-          )
-          .catch(() => dispatch(receiveGames('error')));
-    }
-}
-
-function fetchJackpotAmounts() {
-    return function(dispatch) {
-        dispatch(requestJackpotAmounts());
-
-        return fetch(jackpotsUrl)
-          .then(response => response.json())
-          .then(json => dispatch(receiveJackpotAmounts(json)))
-          .catch(() => dispatch(receiveJackpotAmounts('error')));
-    }
-}
-
-module.exports = {
-    REQUEST_GAMES,
-    RECEIVE_GAMES,
-    CHANGE_CATEGORY_FILTER,
-    REQUEST_JACKPOT_AMOUNTS,
-    RECEIVE_JACKPOT_AMOUNTS,
-    requestGames,
-    receiveGames,
-    changeCategoryFilter,
-    requestJackpotAmounts,
-    receiveJackpotAmounts,
-    fetchGames,
-    fetchJackpotAmounts
-};
