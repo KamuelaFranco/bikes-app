@@ -1,43 +1,30 @@
-const React = require('react');
-const CategoryMenu = require('../components/CategoryMenu');
-const GamesList = require('../components/GamesList');
+import React from 'react';
+import CategoryMenu from '../components/CategoryMenu';
+import GamesList from '../components/GamesList';
+import Loading from '../components/Loading';
 
-const { connect } = require('react-redux');
-const { bindActionCreators } = require('redux');
-const { changeCategoryFilter } = require('../actions');
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-class App extends React.Component {
-    render() {
-        const { changeCategoryFilter } = this.props;
-        const appState = this.props.state;
-        return (
-            <div>
-              <div>
-                <img src="http://stage.whitehatgaming.com/progtest/images/logo.png" />
-              </div>
-              <div>
-                <CategoryMenu category={this.props.categoryFilter}
-                              changeCategory={changeCategoryFilter} />
-                <GamesList category={appState.categoryFilter}
-                           games={appState.games}
-                           jackpotAmounts={appState.jackpotAmounts}
-                />
-              </div>
-            </div>
-        );
-    }
-}
+import { changeClassFilter } from '../actions';
 
-function mapStateToProps(state) {
-    return {
-        state
-    };
-}
+const App = ({ changeClassFilter, state }) => {
+  if (state.isFetching) {
+    return <Loading />;
+  }
+  return (
+    <div>
+      <div>
+        <CategoryMenu
+          categories={[...new Set([].concat(...state.bikes.map(bike => bike.class)))]} category={state.classFilter} changeCategory={changeClassFilter}
+        />
+        <GamesList category={state.classFilter} games={state.bikes} jackpotAmounts={[]} />
+      </div>
+    </div>
+  );
+};
 
-function mapDispatchToProps(dispatch) {
-    return {
-      changeCategoryFilter: bindActionCreators(changeCategoryFilter, dispatch)
-    };
-}
+const mapStateToProps = state => ({ state });
+const mapDispatchToProps = dispatch => ({ changeClassFilter: bindActionCreators(changeClassFilter, dispatch) });
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,7 +6,7 @@ export default function bikes(state = [], action) {
   }
 	switch (action.type) {
 		case REQUEST_BIKES_SUCCESS:
-			return [...state, action.payload.data];
+			return [...action.payload.data];
 		default:
 			return state;
 	}

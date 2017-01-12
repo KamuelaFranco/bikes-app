@@ -1,6 +1,6 @@
 import { REQUEST_BIKES, REQUEST_BIKES_FAIL, REQUEST_BIKES_SUCCESS } from '../actions';
 
-export default function isFetching(state = false, action) {
+export default function isLoading(state = true, action) {
 	if (!action) {
 		return state;
 	}
